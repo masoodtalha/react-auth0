@@ -1,0 +1,10 @@
+subscription {
+  Post(filter: {
+    mutation_in: [CREATED, UPDATED, DELETED]
+  }) {
+    updatedFields
+    node {
+      id
+    }
+  }
+}

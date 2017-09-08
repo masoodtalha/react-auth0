@@ -1,0 +1,61 @@
+types: ./types.graphql
+functions:
+  filter-posts:
+    isEnabled: true
+    handler:
+      code:
+        src: ./code/filter-posts.js
+    type: operationBefore
+    operation: Post.create
+  log-posts:
+    isEnabled: true
+    handler:
+      code:
+        src: ./code/log-posts.js
+    type: subscription
+    query: ./code/log-posts.graphql
+  weather:
+    isEnabled: true
+    handler:
+      code:
+        src: ./code/weather.js
+    type: schemaExtension
+    schema: ./code/weather.graphql
+permissions:
+- isEnabled: true
+  operation: File.read
+  authenticated: false
+- isEnabled: true
+  operation: File.create
+  authenticated: false
+- isEnabled: true
+  operation: File.update
+  authenticated: false
+- isEnabled: true
+  operation: File.delete
+  authenticated: false
+- isEnabled: true
+  operation: Post.read
+  authenticated: false
+- isEnabled: true
+  operation: Post.create
+  authenticated: true
+- isEnabled: true
+  operation: Post.update
+  authenticated: false
+- isEnabled: true
+  operation: Post.delete
+  authenticated: false
+- isEnabled: true
+  operation: User.read
+  authenticated: false
+- isEnabled: true
+  operation: User.create
+  authenticated: false
+- isEnabled: true
+  operation: User.update
+  authenticated: false
+- isEnabled: true
+  operation: User.delete
+  authenticated: false
+rootTokens: []
